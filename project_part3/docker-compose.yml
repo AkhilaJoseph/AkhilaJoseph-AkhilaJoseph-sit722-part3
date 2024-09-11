@@ -15,7 +15,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://postgres_user:postgres_password@db:5432/book_catalog_db
+      DATABASE_URL: postgresql://book_catalog_db_4ak3_user:98XkzhZSWkCcwkHt2ZIVZtDOBAtIvSZt@dpg-crgfg75svqrc73f1oabg-a.oregon-postgres.render.com/book_catalog_db_4ak3
     depends_on:
       - db
 
@@ -24,6 +24,6 @@ services:
     ports:
       - "8001:8000"
     environment:
-      DATABASE_URL: postgresql://postgres_user:postgres_password@db:5432/book_catalog_db
+      DATABASE_URL: postgresql://book_catalog_db_4ak3_user:98XkzhZSWkCcwkHt2ZIVZtDOBAtIvSZt@dpg-crgfg75svqrc73f1oabg-a.oregon-postgres.render.com/book_catalog_db_4ak3
     depends_on:
       - db
