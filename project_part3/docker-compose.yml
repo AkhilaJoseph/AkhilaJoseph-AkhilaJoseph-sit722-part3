@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: book_catalog_db
+    ports:
+      - "5432:5432"
+
+  book_catalog:
+    build: ./book_catalog
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres_user:postgres_password@db:5432/book_catalog_db
+    depends_on:
+      - db
+
+  inventory_management:
+    build: ./inventory_management
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres_user:postgres_password@db:5432/book_catalog_db
+    depends_on:
+      - db
