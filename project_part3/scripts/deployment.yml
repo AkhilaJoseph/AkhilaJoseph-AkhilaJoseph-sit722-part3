@@ -1,1 +1,45 @@
-# Your Solution
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: book-catalog
+  template:
+    metadata:
+      labels:
+        app: book-catalog
+    spec:
+      containers:
+      - name: book-catalog
+        image: your-acr-name.azurecr.io/book-catalog:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: postgresql://book_catalog_db_4ak3_user:98XkzhZSWkCcwkHt2ZIVZtDOBAtIvSZt@dpg-crgfg75svqrc73f1oabg-a.oregon-postgres.render.com/book_catalog_db_4ak3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-management-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: inventory-management
+  template:
+    metadata:
+      labels:
+        app: inventory-management
+    spec:
+      containers:
+      - name: inventory-management
+        image: your-acr-name.azurecr.io/inventory-management:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: postgresql://book_catalog_db_4ak3_user:98XkzhZSWkCcwkHt2ZIVZtDOBAtIvSZt@dpg-crgfg75svqrc73f1oabg-a.oregon-postgres.render.com/book_catalog_db_4ak3
