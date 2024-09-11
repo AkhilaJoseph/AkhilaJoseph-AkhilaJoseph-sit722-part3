@@ -4,8 +4,8 @@ services:
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER: postgres_user
-      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_USER: book_catalog_db_4ak3_user
+      POSTGRES_PASSWORD: 98XkzhZSWkCcwkHt2ZIVZtDOBAtIvSZt
       POSTGRES_DB: book_catalog_db
     ports:
       - "5432:5432"
